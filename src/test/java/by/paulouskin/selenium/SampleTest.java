@@ -11,7 +11,7 @@ public class SampleTest {
 
     @BeforeAll
     public static void setUp() {
-    wd = new ChromeDriver();
+        wd = new ChromeDriver();
     }
 
     @Test
