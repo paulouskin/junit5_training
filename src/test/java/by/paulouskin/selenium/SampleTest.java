@@ -1,5 +1,6 @@
 package by.paulouskin.selenium;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -12,11 +13,12 @@ public class SampleTest {
     @BeforeAll
     public static void setUp() {
         wd = new ChromeDriver();
+        wd.get("http://www.google.com");
     }
 
     @Test
     public void RunChromeBrowser() {
-        wd.get("http://www.google.com");
+        Assert.assertEquals("Google",wd.getTitle());
     }
 
     @AfterAll
