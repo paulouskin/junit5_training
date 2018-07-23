@@ -5,30 +5,32 @@ import by.paulouskin.todolist.abstractions.TodoListItem;
 public class TodoListItemImpl extends TodoListItem {
 
     private String title;
-    private boolean completed;
+    private boolean toggled;
+
+    public void setTitle(String title) {
+        if (title.isEmpty()) throw new IllegalArgumentException("New title cannot be empty");
+        this.title = title;
+    }
 
     public String getTitle() {
         return title;
     }
 
-    public boolean isCompleted() {
-        return completed;
+    public boolean isToggled() {
+        return toggled;
     }
 
     public TodoListItemImpl(String title) {
+        if (title.isEmpty()) throw new IllegalArgumentException("Title cannot be empty");
         this.title = title;
-        this.completed = false;
+        this.toggled = false;
     }
 
     @Override
-    public boolean complete() {
-        if (completed == true) throw new IllegalStateException("Item is already completed");
-        return completed = true;
+    public void toggle() {
+        if (toggled) {toggled = false; return;}
+        toggled = true;
+
     }
 
-    @Override
-    public boolean uncomplete() {
-        if (completed == false) throw new IllegalStateException("Item is not completed yet");
-        return completed = false;
-    }
 }

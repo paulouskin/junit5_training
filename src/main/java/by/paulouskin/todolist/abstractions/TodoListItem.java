@@ -1,7 +1,7 @@
 package by.paulouskin.todolist.abstractions;
 
-import by.paulouskin.todolist.interfaces.Completable;
+import by.paulouskin.todolist.interfaces.Togglable;
 
-public abstract class TodoListItem implements Completable {
+public abstract class TodoListItem implements Togglable {
 
 }
