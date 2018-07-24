@@ -2,7 +2,7 @@ package by.paulouskin.todolist.implementations;
 
 import by.paulouskin.todolist.abstractions.TodoListItem;
 
-public class TodoListItemImpl extends TodoListItem {
+public class TodoListItemImpl implements TodoListItem {
 
     private String title;
     private boolean toggled;

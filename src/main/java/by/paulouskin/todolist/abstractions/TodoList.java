@@ -1,16 +1,14 @@
 package by.paulouskin.todolist.abstractions;
 
+import by.paulouskin.todolist.interfaces.Obtainable;
 import by.paulouskin.todolist.interfaces.Togglable;
 
-public abstract class TodoList {
-
-    public abstract void toggleAll();
-    public abstract boolean deleteItem(String title);
-    public abstract boolean deleteItem(int number);
-    public abstract int addItem(String title);
-    public abstract int addItem(TodoListItem item);
-    public abstract TodoListItem getItem(String title);
-    public abstract TodoListItem getItem(int number);
-    public abstract boolean toggle(Togglable item);
-
+public interface TodoList extends Obtainable {
+    void toggleAll();
+    boolean deleteItem(String title);
+    boolean deleteItem(int number);
+    int addItem(String title);
+    int addItem(TodoListItem item);
+    boolean toggle(Togglable item);
+    int length();
 }
