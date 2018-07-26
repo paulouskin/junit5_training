@@ -4,7 +4,9 @@ import org.junit.jupiter.api.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
+@Tag("todolist")
 public class TodoListImplTest {
 
     private TodoListImpl list;
@@ -46,7 +48,7 @@ public class TodoListImplTest {
     @Test
     public void toggle_item_in_the_list() {
         list.addItem(todos[0]);
-        assertThat(list.toggle("Go for a walk with the dog"),equalTo(true));
+        assertThat(list.toggle("Go for a walk with the dog"),is(equalTo(true)));
     }
 
     @Test
@@ -63,6 +65,45 @@ public class TodoListImplTest {
         list.addItem(todos[0]);
         list.addItem("Go for a walk with the dog");
         assertThat(list.length(),equalTo(1));
+    }
+
+    @Test
+    public void can_delete_item_using_its_title() {
+        String targetTitle = "Item for deletion";
+        list.addItem("Item not for deletion");
+        list.addItem(targetTitle);
+        list.deleteItem(targetTitle);
+        assertThat(list.length(),is(equalTo(1)));
+    }
+
+    @Test
+    public void can_delete_item_using_its_index() {
+        list.addItem(todos[0]);
+        int targetItemIndex = list.addItem(todos[1]);
+        list.deleteItem(targetItemIndex);
+        assertThat(list.length(), is(equalTo(1)));
+    }
+
+    @Test
+    public void throws_exception_when_deleting_item_with_wrong_index() {
+        Assertions.assertThrows(IndexOutOfBoundsException.class,
+                () -> list.deleteItem(1));
+    }
+
+    @Test
+    public void toggle_all_untoggled_items() {
+        String targetTitle = todos[0].getTitle();
+        list.addItems(todos);
+        list.toggle(targetTitle);
+        list.toggleAll();
+        Assertions.assertEquals(false, list.getItem(targetTitle).isToggled());
+    }
+
+    @Test
+    public void get_item_with_its_title() {
+        String targetTitle = todos[0].getTitle();
+        list.addItems(todos);
+        Assertions.assertEquals(targetTitle, list.getItem(targetTitle).getTitle());
     }
 
     @AfterEach

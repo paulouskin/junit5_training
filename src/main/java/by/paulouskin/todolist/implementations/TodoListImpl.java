@@ -1,7 +1,6 @@
 package by.paulouskin.todolist.implementations;
 
 import by.paulouskin.todolist.abstractions.TodoList;
-import by.paulouskin.todolist.abstractions.TodoListItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,17 +16,18 @@ public class TodoListImpl implements TodoList {
 
     @Override
     public void toggleAll() {
-
+        items.stream()
+                .forEach(TodoListItemImpl::toggle);
     }
 
     @Override
-    public boolean deleteItem(String title) {
-        return false;
+    public void deleteItem(String title) {
+        items.removeIf(todoListItem -> todoListItem.getTitle().equalsIgnoreCase(title));
     }
 
     @Override
-    public boolean deleteItem(int number) {
-        return false;
+    public void deleteItem(int index) {
+        items.remove(index - 1);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class TodoListImpl implements TodoList {
     }
 
     public void addItems(TodoListItemImpl[] todos) {
-        items.addAll(Arrays.asList(todos));
+        items.addAll(new ArrayList<>(Arrays.asList(todos)));
     }
 
     @Override
@@ -72,12 +72,12 @@ public class TodoListImpl implements TodoList {
     }
 
     @Override
-    public TodoListItem getItem(String title) {
-        return null;
+    public TodoListItemImpl getItem(String title) {
+        return findItemInList(title);
     }
 
     @Override
-    public TodoListItem getItem(int number) {
+    public TodoListItemImpl getItem(int number) {
         return null;
     }
 }

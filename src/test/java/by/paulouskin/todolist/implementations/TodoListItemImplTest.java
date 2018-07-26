@@ -3,6 +3,7 @@ package by.paulouskin.todolist.implementations;
 import by.paulouskin.todolist.implementations.TodoListItemImpl;
 import org.junit.jupiter.api.*;
 
+@Tag("todolistitem")
 public class TodoListItemImplTest {
 
     TodoListItemImpl item;
