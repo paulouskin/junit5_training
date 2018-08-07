@@ -77,9 +77,7 @@ public class TodoListImpl implements TodoList {
     }
 
     @Override
-    public TodoListItemImpl getItem(int number) {
-        String str = null;
-        str.toUpperCase();
+    public TodoListItemImpl getItem(int index) {
         return null;
     }
 }
