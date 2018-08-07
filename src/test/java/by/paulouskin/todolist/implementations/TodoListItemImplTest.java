@@ -45,8 +45,8 @@ public class TodoListItemImplTest {
     @Test
     public void can_set_new_title() {
         String new_title = "New title for test item";
-        item.setTitle(new_title);
-        Assertions.assertEquals(new_title, item.getTitle());
+        TodoListItemImpl newItem = item.setTitle(new_title);
+        Assertions.assertEquals(new_title, newItem.getTitle());
     }
 
     @Test

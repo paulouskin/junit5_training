@@ -4,12 +4,12 @@ import by.paulouskin.todolist.abstractions.TodoListItem;
 
 public class TodoListItemImpl implements TodoListItem {
 
-    private String title;
+    private final String title;
     private boolean toggled;
 
-    public void setTitle(String title) {
+    public TodoListItemImpl setTitle(String title) {
         if (title.isEmpty()) throw new IllegalArgumentException("New title cannot be empty");
-        this.title = title;
+        return new TodoListItemImpl(title);
     }
 
     public String getTitle() {
