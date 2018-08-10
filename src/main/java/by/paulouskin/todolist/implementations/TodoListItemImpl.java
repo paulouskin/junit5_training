@@ -1,11 +1,15 @@
 package by.paulouskin.todolist.implementations;
 
 import by.paulouskin.todolist.abstractions.TodoListItem;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 public class TodoListItemImpl implements TodoListItem {
 
     private final String title;
     private boolean toggled;
+    final static Logger logger = LogManager.getLogger(TodoListItemImpl.class);
 
     public TodoListItemImpl setTitle(String title) {
         if (title.isEmpty()) throw new IllegalArgumentException("New title cannot be empty");

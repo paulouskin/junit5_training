@@ -1,6 +1,8 @@
 package by.paulouskin.todolist.implementations;
 
 import org.junit.jupiter.api.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -11,10 +13,11 @@ public class TodoListImplTest {
 
     private TodoListImpl list;
     private TodoListItemImpl[] todos;
+    private static Logger logger;
 
     @BeforeAll
     public static void setUpAll() {
-
+        logger = LoggerFactory.getLogger(TodoListImplTest.class);
     }
     @BeforeEach
     public void setUp() {
@@ -28,6 +31,7 @@ public class TodoListImplTest {
 
     @Test
     public void can_add_items_to_the_list(){
+        logger.info("Add items to list test");
         list.addItem(todos[0]);
         list.addItem(todos[1]);
         Assertions.assertEquals(2,list.length());
@@ -35,6 +39,7 @@ public class TodoListImplTest {
 
     @Test
     public void can_add_an_array_of_items_to_the_list() {
+        logger.info("Add array of items in list test");
         list.addItems(todos);
         Assertions.assertEquals(3, list.length());
     }
