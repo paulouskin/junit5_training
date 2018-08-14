@@ -1,9 +1,11 @@
 package by.paulouskin.todolist.implementations;
 
+import by.paulouskin.hamcrest.examples.IsEmptyTodoList;
 import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static by.paulouskin.hamcrest.examples.IsEmptyTodoList.isAnEmptyTodoList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -109,6 +111,11 @@ public class TodoListImplTest {
         String targetTitle = todos[0].getTitle();
         list.addItems(todos);
         Assertions.assertEquals(targetTitle, list.getItem(targetTitle).getTitle());
+    }
+    @Test
+    public void todo_list_is_empty_after_creation() {
+        logger.info("test with our custom matcher for todo list class");
+        assertThat(list, isAnEmptyTodoList());
     }
 
     @AfterEach
