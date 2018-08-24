@@ -1,4 +1,4 @@
-package by.paulouskin.todolist.implementations;
+package by.paulouskin.junit5.features;
 
 import org.junit.jupiter.api.*;
 
