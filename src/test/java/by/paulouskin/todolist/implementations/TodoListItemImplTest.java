@@ -14,19 +14,6 @@ public class TodoListItemImplTest {
     }
 
     @Test
-    public void toogle_an_item() {
-        item.toggle();
-        Assertions.assertTrue(item.isToggled());
-    }
-
-    @Test
-    public void untoggle_an_item() {
-        item.toggle();
-        item.toggle();
-        Assertions.assertFalse(item.isToggled());
-    }
-
-    @Test
     public void item_is_not_toggled_after_creation() {
         Assertions.assertFalse(item.isToggled());
     }

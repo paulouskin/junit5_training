@@ -16,6 +16,7 @@ public class TodoListImpl implements TodoList {
 
     @Override
     public void toggleAll() {
+        if (items.size() == 0) throw new NullPointerException("No items in list");
         items.stream()
                 .forEach(TodoListItemImpl::toggle);
     }
