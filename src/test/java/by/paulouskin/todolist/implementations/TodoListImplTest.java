@@ -113,6 +113,14 @@ public class TodoListImplTest {
         list.addItems(todos);
         Assertions.assertEquals(targetTitle, list.getItem(targetTitle).getTitle());
     }
+
+    @Test
+    public void get_item_with_its_index() {
+        String targetTitle = todos[1].getTitle();
+        list.addItems(todos);
+        Assertions.assertEquals(targetTitle, list.getItem(2).getTitle());
+    }
+
     @Test
     public void todo_list_is_empty_after_creation() {
         logger.info("test with our custom matcher for todo list class");

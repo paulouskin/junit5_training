@@ -16,6 +16,7 @@ public class TodoListItemImpl implements TodoListItem {
         return new TodoListItemImpl(title);
     }
 
+    @Override
     public String getTitle() {
         return title;
     }

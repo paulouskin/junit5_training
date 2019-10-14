@@ -1,6 +1,7 @@
 package by.paulouskin.todolist.implementations;
 
 import by.paulouskin.todolist.abstractions.TodoList;
+import by.paulouskin.todolist.abstractions.TodoListItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -73,12 +74,12 @@ public class TodoListImpl implements TodoList {
     }
 
     @Override
-    public TodoListItemImpl getItem(String title) {
+    public TodoListItem getItem(String title) {
         return findItemInList(title);
     }
 
     @Override
-    public TodoListItemImpl getItem(int index) {
-        return null;
+    public TodoListItem getItem(int index) {
+        return items.get(index - 1);
     }
 }
