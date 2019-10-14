@@ -21,6 +21,7 @@ public class TodoListImplTest {
     public static void setUpAll() {
         logger = LoggerFactory.getLogger(TodoListImplTest.class);
     }
+
     @BeforeEach
     public void setUp() {
         todos = new TodoListItemImpl[]{
