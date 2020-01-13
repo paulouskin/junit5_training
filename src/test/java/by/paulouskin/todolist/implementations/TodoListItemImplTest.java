@@ -4,6 +4,7 @@ import by.paulouskin.todolist.implementations.TodoListItemImpl;
 import org.junit.jupiter.api.*;
 
 @Tag("todolistitem")
+@Tag("all")
 public class TodoListItemImplTest {
 
     TodoListItemImpl item;

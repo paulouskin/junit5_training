@@ -11,6 +11,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 @Tag("todolist")
+@Tag("all")
 public class TodoListImplTest {
 
     private TodoListImpl list;

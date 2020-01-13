@@ -20,6 +20,7 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 @Tag("parameterized")
+@Tag("all")
 public class ParameterizedTodoListTest {
 
     private TodoListImpl list;

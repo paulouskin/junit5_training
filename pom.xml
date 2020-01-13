@@ -15,7 +15,7 @@
         <log4j.version>2.12.1</log4j.version>
         <surefire.plugin.version>2.22.2</surefire.plugin.version>
         <compiler.plugin.version>3.8.1</compiler.plugin.version>
-        <tags>todolistitem</tags>
+        <tags>all</tags>
     </properties>
     <dependencies>
         <dependency>

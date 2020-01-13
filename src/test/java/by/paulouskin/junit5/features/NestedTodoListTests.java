@@ -8,6 +8,7 @@ import static by.paulouskin.hamcrest.examples.IsEmptyTodoList.isAnEmptyTodoList;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @DisplayName("A todo list")
+@Tag("all")
 public class NestedTodoListTests {
 
     TodoListImpl todoList;

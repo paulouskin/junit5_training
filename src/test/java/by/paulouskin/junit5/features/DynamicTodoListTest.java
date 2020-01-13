@@ -2,10 +2,7 @@ package by.paulouskin.junit5.features;
 
 import by.paulouskin.todolist.implementations.TodoListImpl;
 import by.paulouskin.todolist.implementations.TodoListItemImpl;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DynamicTest;
-import org.junit.jupiter.api.TestFactory;
+import org.junit.jupiter.api.*;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -17,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
+@Tag("all")
 public class DynamicTodoListTest {
 
     private TodoListImpl list;
