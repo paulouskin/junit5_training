@@ -4,13 +4,22 @@ import by.paulouskin.todolist.implementations.TodoListImpl;
 import org.apiguardian.api.API;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 
+@Tag("parameterized")
 public class ParameterizedTodoListTest {
 
     private TodoListImpl list;
@@ -21,12 +30,41 @@ public class ParameterizedTodoListTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Todo Item 1","Todo Item 2"})
-    public void parameterizedTestForTodoList(String todoItemTitle) {
+    @ValueSource(strings = {"Todo Item Value 1","Todo Item Value 2"})
+    public void parameterizedWithValueSourceTodoListTest(String todoItemTitle) {
         list.addItem(todoItemTitle);
         list.deleteItem(todoItemTitle);
         assertThat(list.length(), is(equalTo(0)));
     }
+
+    @ParameterizedTest
+    @CsvSource({"Todo Item CSV 1", "Todo Item CSV 2"})
+    public void parameterizedWithCsvSourceTodoListTest(String todoItemTitle) {
+        list.addItem(todoItemTitle);
+        list.deleteItem(todoItemTitle);
+        assertThat(list.length(), is(equalTo(0)));
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/todos.csv")
+    public void parameterizedWithCsvFileSourceTodoListTest(String todoItemTitle) {
+        list.addItem(todoItemTitle);
+        list.deleteItem(todoItemTitle);
+        assertThat(list.length(), is(equalTo(0)));
+    }
+
+    @ParameterizedTest
+    @MethodSource("listItemsProvider")
+    public void parameterizedWithMethodSourceTodoListTest(String todoItemTitle) {
+        list.addItem(todoItemTitle);
+        list.deleteItem(todoItemTitle);
+        assertThat(list.length(), is(equalTo(0)));
+    }
+
+    static List<String> listItemsProvider() {
+        return Arrays.asList("Todo Item Method 1", "Todo Item Method 2");
+    }
+
     @AfterEach
     public void tearDown() {
         list = null;

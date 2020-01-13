@@ -15,6 +15,7 @@
         <log4j.version>2.12.1</log4j.version>
         <surefire.plugin.version>2.22.2</surefire.plugin.version>
         <compiler.plugin.version>3.8.1</compiler.plugin.version>
+        <tags>todolistitem</tags>
     </properties>
     <dependencies>
         <dependency>
@@ -94,6 +95,9 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
             <version>${surefire.plugin.version}</version>
+            <configuration>
+                <groups>${tags}</groups>
+            </configuration>
         </plugin>
     </plugins>
 </build>
