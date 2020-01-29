@@ -1,11 +1,13 @@
 package by.paulouskin.junit5.features;
 
 import by.paulouskin.todolist.implementations.TodoListImpl;
+import by.paulouskin.todolist.implementations.TodoListItemImpl;
 import org.apiguardian.api.API;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.AggregateWith;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -40,9 +42,9 @@ public class ParameterizedTodoListTest {
 
     @ParameterizedTest
     @CsvSource({"Todo Item CSV 1", "Todo Item CSV 2"})
-    public void parameterizedWithCsvSourceTodoListTest(String todoItemTitle) {
-        list.addItem(todoItemTitle);
-        list.deleteItem(todoItemTitle);
+    public void parameterizedWithCsvSourceArgumentAggregatorTodoListTest(@AggregateWith(TodoItemArgumentsAggregator.class) TodoListItemImpl todo) {
+        list.addItem(todo);
+        list.deleteItem(todo.getTitle());
         assertThat(list.length(), is(equalTo(0)));
     }
 
@@ -51,6 +53,14 @@ public class ParameterizedTodoListTest {
     public void parameterizedWithCsvFileSourceTodoListTest(String todoItemTitle) {
         list.addItem(todoItemTitle);
         list.deleteItem(todoItemTitle);
+        assertThat(list.length(), is(equalTo(0)));
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/todos.csv")
+    public void parameterizedWithCsvFileSourceImplicitConversionTodoListTest(TodoListItemImpl todo) {
+        list.addItem(todo);
+        list.deleteItem(todo.getTitle());
         assertThat(list.length(), is(equalTo(0)));
     }
 

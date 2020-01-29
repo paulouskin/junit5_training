@@ -21,6 +21,11 @@ public class TodoListItemImpl implements TodoListItem {
         return title;
     }
 
+
+    public static TodoListItemImpl fromTitle(String title) {
+        return new TodoListItemImpl(title);
+    }
+
     public boolean isToggled() {
         return toggled;
     }
